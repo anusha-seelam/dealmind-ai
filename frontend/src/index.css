@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-surface text-text-primary;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track { @apply bg-surface-card; }
+  ::-webkit-scrollbar-thumb { @apply bg-surface-border rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-text-muted; }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface-card border border-surface-border rounded-xl;
+  }
+
+  .card-raised {
+    @apply bg-surface-raised border border-surface-border rounded-xl;
+  }
+
+  .btn-primary {
+    @apply bg-brand-600 hover:bg-brand-500 text-white font-medium px-4 py-2
+           rounded-lg transition-colors duration-150 disabled:opacity-50
+           disabled:cursor-not-allowed flex items-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply bg-surface-raised hover:bg-surface-border text-text-primary font-medium
+           px-4 py-2 rounded-lg border border-surface-border transition-colors
+           duration-150 flex items-center gap-2;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-surface-raised text-text-secondary hover:text-text-primary
+           font-medium px-3 py-1.5 rounded-lg transition-colors duration-150
+           flex items-center gap-2;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full;
+  }
+
+  .memory-chip {
+    @apply bg-memory/10 border border-memory/30 text-memory text-xs px-2 py-1
+           rounded-full inline-flex items-center gap-1;
+  }
+
+  .input {
+    @apply bg-surface-raised border border-surface-border text-text-primary
+           placeholder:text-text-muted rounded-lg px-3 py-2 w-full
+           focus:outline-none focus:ring-2 focus:ring-brand-500/50
+           focus:border-brand-500 transition-colors;
+  }
+}
+
+/* Prose improvements for AI recommendations */
+.prose-deal h2 { @apply text-base font-semibold text-text-primary mt-4 mb-2; }
+.prose-deal h3 { @apply text-sm font-semibold text-brand-300 mt-3 mb-1; }
+.prose-deal ul { @apply space-y-1 ml-4; }
+.prose-deal li { @apply text-text-secondary text-sm list-disc; }
+.prose-deal li::marker { @apply text-brand-500; }
+.prose-deal strong { @apply text-text-primary font-semibold; }
+.prose-deal p { @apply text-text-secondary text-sm leading-relaxed; }
+
+/* Pulse for live indicator */
+@keyframes pulse-ring {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.pulse { animation: pulse-ring 2s ease-in-out infinite; }
+
+/* Memory glow */
+.memory-glow {
+  box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.2), 0 4px 20px rgba(168, 85, 247, 0.08);
+}
